@@ -1,0 +1,8 @@
+.route-content {
+  border-radius: $box-border-radius;
+
+  &--white {
+    background-color: #fff;
+    padding: 0 24px 30px;
+  }
+}

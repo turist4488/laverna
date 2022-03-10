@@ -1,0 +1,43 @@
+
+.ant-tabs {
+  &.custom-page-tabs {
+    > .ant-tabs-nav {
+      .ant-tabs-tab {
+        padding: 10px 40px;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+    }
+  }
+}
+
+.avatar-uploader {
+  .ant-upload.ant-upload-select {
+    width: 100%;
+  }
+}
+
+.ant-table {
+  .ant-table-tbody {
+    > .ant-table-row-p0 {
+      > .ant-table-cell {
+        padding: 0 16px;
+      }
+    }
+  }
+}
+
+.ant-btn.table-view-details-btn {
+  padding: 16px;
+  margin-right: -16px;
+  text-align: center;
+  height: auto;
+  border-radius: 0;
+  border: none;
+  font-size: 24px;
+  border-left: 1px solid #f0f0f0;
+
+  &:hover {
+
+  }
+}

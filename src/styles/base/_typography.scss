@@ -1,0 +1,123 @@
+@import url("//fonts.googleapis.com/css?family=Montserrat:400,500");
+
+$body-font-family: "Montserrat", sans-serif;
+
+$heading-font-family: inherit;
+
+$text: #333;
+
+$heading-line-height: 2;
+$body-line-height: 2;
+
+$thin: 100;
+$extra-light: 200;
+$light: 300;
+$normal: 400;
+$medium: 500;
+$semi-bold: 600;
+$bold: 700;
+$extra-bold: 800;
+$heavy: 900;
+
+body {
+  font-family: $body-font-family;
+  color: $text;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: $heading-line-height;
+  font-family: $heading-font-family;
+  font-weight: $semi-bold;
+}
+
+p,
+li,
+textarea,
+input,
+label,
+address {
+  line-height: $body-line-height;
+  color: $text;
+}
+
+%h1 {
+  font-size: 28px;
+  @include tablet {
+    font-size: 32px;
+  }
+  @include desktop {
+    font-size: 50px;
+  }
+}
+
+%h2 {
+  font-size: 22px;
+  @include tablet {
+    font-size: 30px;
+  }
+  @include desktop {
+    font-size: 35px;
+  }
+}
+
+%h3 {
+  font-size: 19px;
+  @include tablet {
+    font-size: 25px;
+  }
+}
+
+%h4 {
+  font-size: 18px;
+  @include tablet {
+    font-size: 22.5px;
+  }
+}
+
+%h5 {
+  font-size: 17px;
+  @include tablet {
+    font-size: 20px;
+  }
+}
+
+%h6 {
+  font-size: 16px;
+}
+
+%p {
+  font-size: 16px;
+}
+
+h1 {
+  @extend %h1;
+}
+
+h2 {
+  @extend %h2;
+}
+
+h3 {
+  @extend %h3;
+}
+
+h4 {
+  @extend %h4;
+}
+
+h5 {
+  @extend %h5;
+}
+
+h6 {
+  @extend %h6;
+}
+
+p {
+  @extend %p;
+}
