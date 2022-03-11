@@ -27,7 +27,7 @@ export const AuthenticationProvider = ({ children }) => {
       try {
         setAuthenticating(true);
 
-        const token = localStorage["authentication-token"] || "";
+        const token = localStorage["authentication-token"] || "test";
 
         setUser({
           token,
