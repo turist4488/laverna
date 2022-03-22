@@ -62,29 +62,29 @@ function LanguagesPage() {
       <Divider />
       <div>
         <Table dataSource={data} pagination={false} loading={loading} rowKey={record => record.locale}>
-          <Column title={t('ID')} dataIndex="id" key="id"/>
+          <Column title={t('ID')} dataIndex="_id" key="_id"/>
           <Column title={t('Name')} dataIndex="name" key="name"/>
           <Column title={t('Locale')} dataIndex="locale" key="locale"/>
           <Column
             title={t('Active')}
-            dataIndex="active"
-            key="active"
+            dataIndex="isActive"
+            key="isActive"
             render={(active, record) => (
               active ? <CheckOutlined style={{color: 'green'}}/> : <CloseOutlined style={{color: 'red'}} />
             )}
           />
           <Column
             title={t('Created at')}
-            dataIndex="created_at"
-            key="created_at"
+            dataIndex="createdAt"
+            key="createdAt"
             render={date => (
               `${new Date(date).toLocaleDateString("uk-UK")} ${new Date(date).toLocaleTimeString()}`
             )}
           />
           <Column
             title={t('Updated at')}
-            dataIndex="updated_at"
-            key="updated_at"
+            dataIndex="updatedAt"
+            key="updatedAt"
             render={date => (
               `${new Date(date).toLocaleDateString("uk-UK")} ${new Date(date).toLocaleTimeString()}`
             )}

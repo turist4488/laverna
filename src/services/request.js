@@ -28,24 +28,24 @@ export const request = async (endpoint, options) => {
       return axios.post(URL, { ...data }, {
         ...REQUEST_CONFIG
       })
-        .then(res => res.data?.data);
+        .then(res => res.data);
     case 'PUT':
       return axios.put(URL, { ...data }, {
         ...REQUEST_CONFIG
       })
-        .then(res => res.data?.data);
+        .then(res => res.data);
     case 'GET':
       return axios.get(URL, {
         ...REQUEST_CONFIG
       })
-        .then(res => res.data?.data);
+        .then(res => res.data);
     case 'DELETE':
       return axios.delete(URL, {
         ...REQUEST_CONFIG,
         data: data || undefined,
         params: params || undefined
       })
-        .then(res => res.data?.data);
+        .then(res => res.data);
     default: break;
   }
 }
