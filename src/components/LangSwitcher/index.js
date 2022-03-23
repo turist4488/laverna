@@ -33,7 +33,7 @@ function LangSwitcher() {
       trigger={['click']}
       className={styles.root}
       overlayClassName={styles.list}
-      placement="bottomCenter"
+      placement="bottom"
     >
       <Button type="text" className="ant-dropdown-link">
         {i18n.language?.toUpperCase()} <DownOutlined />

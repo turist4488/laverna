@@ -10,7 +10,7 @@ function LanguageEditPage({match}) {
     const { t } = useTranslation();
 
     return (
-        <div className="route-content">
+        <div className="route-content route-content--white">
             <div className="route-header route-header--separate">
                 <h3>{t('Language editing')}</h3>
             </div>

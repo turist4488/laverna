@@ -13,7 +13,7 @@ const CategoriesRoutes = () => {
     <Switch>
       <ProtectedRoute path={path} exact component={CategoriesPage}/>
       <ProtectedRoute path={`${path}/create`} component={CategoryCreatePage}/>
-      <ProtectedRoute path={`${path}/edit/:id`} component={CategoryEditPage}/>
+      <ProtectedRoute path={`${path}/:id`} component={CategoryEditPage}/>
     </Switch>
   );
 };

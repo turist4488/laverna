@@ -20,7 +20,9 @@ export const request = async (endpoint, options) => {
   }
 
   const REQUEST_CONFIG = {
-    requestHeaders,
+    headers: {
+      ...requestHeaders
+    }
   };
 
   switch (method) {

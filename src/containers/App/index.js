@@ -4,8 +4,8 @@ import Routes from "../../routes";
 import { AuthenticationProvider } from "../../context/AuthenticationContext";
 import APP_LANGUAGE from '../../utils/language';
 import { DEFAULT_LANG } from '../../constants/languages';
-import '../../styles/main.scss';
 import './App.less';
+import '../../styles/main.scss';
 
 
 function App() {

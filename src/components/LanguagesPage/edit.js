@@ -2,7 +2,6 @@ import React, {useCallback, useEffect} from 'react';
 import {Form, Input, Button, Row, Col, Switch, Divider} from 'antd';
 import {useTranslation} from "react-i18next";
 import {useRestApi} from "../../hooks/useRestApi";
-import {parseTranslationsToInputs} from "../../utils/localizeInputName";
 
 
 function EditLanguageForm({id, editMode}) {

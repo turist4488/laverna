@@ -1,0 +1,13 @@
+.icon-uploader {
+  & > .ant-upload {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+.thumbnail-uploader {
+  & > .ant-upload {
+    width: 200px;
+    height: 200px;
+  }
+}

@@ -16,23 +16,24 @@ export default function useLocalizedForm(localizedFields = []) {
   }, [sendRequest]);
 
 
-  const getValuesByLocale = locale => {
-    const values = {};
+  const getValuesByField = field => {
+    if (Array.isArray(data)) {
+      return data.reduce((fieldTranslations, lang) => ({
+        ...fieldTranslations,
+        [lang.locale]: form.getFieldValue(localizeInputName(field, lang.locale)) || ''
+      }), {})
+    }
 
-    localizedFields.forEach(field => {
-      values[field] = form.getFieldValue(localizeInputName(field, locale)) || '';
-    });
-
-    return values;
+    return {}
   };
 
   const getTranslations = () => {
-    if (Array.isArray(data)) {
-      return data.map(lang => ({
-        locale: lang.locale,
-        ...getValuesByLocale(lang.locale)
-      }))
-    }
+    return localizedFields.reduce((translations, field) => ({
+      ...translations,
+      [field]: {
+        ...getValuesByField(field)
+      }
+    }), {});
   };
 
   return [
