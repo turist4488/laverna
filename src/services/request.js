@@ -34,6 +34,11 @@ export const request = async (endpoint, options) => {
         ...REQUEST_CONFIG
       })
         .then(res => res.data);
+    case 'PATCH':
+      return axios.patch(URL, { ...data }, {
+        ...REQUEST_CONFIG
+      })
+          .then(res => res.data);
     case 'GET':
       return axios.get(URL, {
         ...REQUEST_CONFIG

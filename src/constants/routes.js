@@ -72,6 +72,6 @@ export const ROUTES = {
     key: 'languages',
     path: '/languages',
     name: 'Languages',
-    exact: true
+    exact: false
   },
 };

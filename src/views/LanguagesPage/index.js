@@ -6,7 +6,8 @@ import {
   DeleteOutlined,
   ExclamationCircleOutlined,
   CheckOutlined,
-  CloseOutlined
+  CloseOutlined,
+  EditOutlined
 } from '@ant-design/icons';
 import {Modal, Button, Table, Space, Divider} from 'antd';
 import {useRestApi} from "../../hooks/useRestApi";
@@ -95,9 +96,12 @@ function LanguagesPage() {
             align="right"
             render={(text, record) => (
               <Space size="middle">
-                <Button danger={true} type="text" onClick={() => showDeleteConfirm(record.id)} disabled={record.default}>
+                <Button danger={true} type="text" onClick={() => showDeleteConfirm(record._id)} disabled={record.default}>
                   <DeleteOutlined />
                   {t('Delete')}
+                </Button>
+                <Button href={`/languages/${record._id}`} title={t('Edit')} type="text" onClick={() => {}} disabled={record.default}>
+                  <EditOutlined />
                 </Button>
               </Space>
             )}

@@ -1,30 +1,51 @@
-import React, {useCallback} from 'react';
+import React, {useCallback, useEffect} from 'react';
 import {Form, Input, Button, Row, Col, Switch, Divider} from 'antd';
 import {useTranslation} from "react-i18next";
 import {useRestApi} from "../../hooks/useRestApi";
+import {parseTranslationsToInputs} from "../../utils/localizeInputName";
 
 
-function EditLanguageForm({editMode}) {
+function EditLanguageForm({id, editMode}) {
 
   const {t} = useTranslation();
 
   const [form] = Form.useForm();
 
-  const [{ loading, data }, { sendRequest }] = useRestApi('/languages');
+  const [editLanguageState, editLanguageApi] = useRestApi(`/languages${editMode ? '/' + id : ''}`);
+  const [getLanguageState, getLanguageApi] = useRestApi(`/languages/${id}`);
 
   const onFinish = useCallback((values) => {
-    sendRequest({
-      method: 'POST',
+    editLanguageApi.sendRequest({
+      method: editMode ? 'PATCH' : 'POST',
       data: {
-        ...values,
-        active: +values.active
+        ...values
       }
     });
 
-    if(data) {
+    if(!editMode && !editLanguageState.error) {
       form.resetFields();
     }
-  }, [data, sendRequest, form]);
+  }, [editMode, editLanguageApi, editLanguageState, form]);
+
+  useEffect(() => {
+    if(editMode && id) {
+      getLanguageApi.sendRequest({
+        method: 'GET'
+      });
+    }
+  }, [getLanguageApi, editMode, id]);
+
+  useEffect(() => {
+    if(getLanguageState.data) {
+      const { locale, isActive, name } = getLanguageState.data;
+
+      form.setFieldsValue({
+        locale,
+        isActive,
+        name
+      });
+    }
+  }, [getLanguageState, form]);
 
   return (
     <div className="">
@@ -44,7 +65,7 @@ function EditLanguageForm({editMode}) {
               <Input placeholder="ru, en, uk, etc"/>
             </Form.Item>
             <Divider/>
-            <Form.Item initialValue={false} name="active" label={t('Active')} labelCol={{span: 7}} labelAlign="left" valuePropName="checked">
+            <Form.Item initialValue={false} name="isActive" label={t('Active')} labelCol={{span: 7}} labelAlign="left" valuePropName="checked">
               <Switch />
             </Form.Item>
             <Form.Item initialValue={false} name="default" label={t('Default')} labelCol={{span: 7}} labelAlign="left" valuePropName="checked">
@@ -54,7 +75,7 @@ function EditLanguageForm({editMode}) {
         </Row>
         <Divider />
         <Row justify="start">
-          <Button type="primary" htmlType="submit" size="large" style={{minWidth: 150}} disabled={loading}>
+          <Button type="primary" htmlType="submit" size="large" style={{minWidth: 150}} disabled={editLanguageState.loading}>
             {t(editMode ? 'Save' : 'Create')}
           </Button>
         </Row>
