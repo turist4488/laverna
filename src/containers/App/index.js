@@ -11,7 +11,7 @@ import '../../styles/main.scss';
 function App() {
 
   return (
-    <BrowserRouter basename={APP_LANGUAGE === DEFAULT_LANG ? '' : `/${APP_LANGUAGE}/`}>
+    <BrowserRouter basename={APP_LANGUAGE === DEFAULT_LANG ? '/' : `/${APP_LANGUAGE}/`}>
       <AuthenticationProvider>
         <Routes />
       </AuthenticationProvider>

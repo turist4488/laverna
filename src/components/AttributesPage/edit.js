@@ -5,8 +5,8 @@ import {useRestApi} from "../../hooks/useRestApi";
 import useLocalizedForm from "../../hooks/useLocalizedForm";
 import {localizeInputName, parseTranslationsToInputs} from "../../utils/localizeInputName";
 import Loader from "../Loader";
-import {useHistoryGo} from "../../hooks/useHistoryGo";
 import {ROUTES} from "../../constants/routes";
+import {useNavigate} from "react-router";
 
 
 const TRANSLATING_FIELDS = ['name'];
@@ -15,7 +15,7 @@ function EditAttributeForm({id = null, editMode = false}) {
 
   const {t} = useTranslation();
 
-  const { go } = useHistoryGo();
+  const navigate = useNavigate();
 
   const [{ form, locales, localesLoading }, { getTranslations }] = useLocalizedForm(TRANSLATING_FIELDS);
 
@@ -36,10 +36,10 @@ function EditAttributeForm({id = null, editMode = false}) {
 
     if(!editMode && !editAttributeState.error) {
       form.resetFields();
-      go.push(ROUTES.catalog.routes.attributes.path);
+      navigate(ROUTES.catalog.routes.attributes.path);
     }
 
-  }, [editAttributeState, editAttributeApi, form, getTranslations, editMode]);
+  }, [editAttributeState, navigate, editAttributeApi, form, getTranslations, editMode]);
 
   useEffect(() => {
     if(editMode && id) {

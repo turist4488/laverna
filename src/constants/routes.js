@@ -17,26 +17,31 @@ export const ROUTES = {
       products: {
         key: 'products',
         path: '/products',
+        routePath: 'products/*',
         name: 'Products'
       },
       cards: {
         key: 'cards',
         path: '/cards',
+        routePath: 'cards/*',
         name: 'Cards'
       },
       categories: {
         key: 'categories',
         path: '/categories',
+        routePath: 'categories/*',
         name: 'Categories'
       },
       brands: {
         key: 'brands',
         path: '/brands',
+        routePath: 'brands/*',
         name: 'Brands'
       },
       attributes: {
         key: 'attributes',
         path: '/attributes',
+        routePath: 'attributes/*',
         name: 'Attributes'
       },
     }
@@ -48,22 +53,26 @@ export const ROUTES = {
       clients: {
         key: 'clients',
         path: '/customers',
+        routePath: 'customers/*',
         name: 'List',
         exact: true,
       },
       addresses: {
         key: 'addresses',
         path: '/customers/addresses',
+        routePath: 'customers/addresses/*',
         name: 'Addresses'
       },
       tariffs: {
         key: 'tariffs',
         path: '/customers/tariffs',
+        routePath: 'customers/tariffs/*',
         name: 'Tariffs'
       },
       roles: {
         key: 'roles',
         path: '/customers/roles',
+        routePath: 'customers/roles/*',
         name: 'Roles'
       }
     }
@@ -71,6 +80,7 @@ export const ROUTES = {
   languages: {
     key: 'languages',
     path: '/languages',
+    routePath: 'languages/*',
     name: 'Languages',
     exact: false
   },

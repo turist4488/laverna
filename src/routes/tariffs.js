@@ -3,18 +3,19 @@ import ProtectedRoute from "../components/PrivateRoute";
 import TariffsPage from "../views/TariffsPage";
 import TariffCreatePage from "../views/TariffsPage/create";
 import TariffEditPage from "../views/TariffsPage/edit";
-import {Switch, useRouteMatch} from "react-router";
+import { useLocation } from "react-router-dom";
+import { Routes } from "react-router";
 
 
 const TariffsRoutes = () => {
-  const { path } = useRouteMatch();
+  const { pathname } = useLocation();
 
   return (
-    <Switch>
-      <ProtectedRoute exact path={path} component={TariffsPage}/>
-      <ProtectedRoute path={`${path}/create`} component={TariffCreatePage}/>
-      <ProtectedRoute path={`${path}/edit/:id`} component={TariffEditPage}/>
-    </Switch>
+    <Routes>
+      <ProtectedRoute exact path={pathname} component={TariffsPage}/>
+      <ProtectedRoute path={`${pathname}/create`} component={TariffCreatePage}/>
+      <ProtectedRoute path={`${pathname}/edit/:id`} component={TariffEditPage}/>
+    </Routes>
   );
 };
 

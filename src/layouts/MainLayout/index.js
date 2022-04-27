@@ -4,11 +4,11 @@ import {
   LeftOutlined,
   RightOutlined
 } from "@ant-design/icons";
-import AuthenticationOptions from "../AuthenticationOptions";
-import LangSwitcher from "../LangSwitcher";
+import AuthenticationOptions from "../../components/AuthenticationOptions";
+import LangSwitcher from "../../components/LangSwitcher";
 import {SideBarContext} from "../../context/SideBarContext";
-import SideBar from "../SideBar";
-import Breadcrumbs from "../Breadcrumbs";
+import SideBar from "../../components/SideBar";
+import Breadcrumbs from "../../components/Breadcrumbs";
 import './MainLayout.scss';
 
 const { Header, Content } = Layout;

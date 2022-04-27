@@ -2,17 +2,18 @@ import React from 'react';
 import useBreadcrumbs from 'use-react-router-breadcrumbs';
 import {Breadcrumb} from "antd";
 import {Trans} from "react-i18next";
-import {useHistoryGo} from "../../hooks/useHistoryGo";
+import {useNavigate} from "react-router";
 
 function Breadcrumbs() {
-  const { go } = useHistoryGo();
+  const navigate = useNavigate();
 
   const breadcrumbs = useBreadcrumbs([], { excludePaths: ['/'] });
 
+  console.log(breadcrumbs)
   return (
     <Breadcrumb style={{ margin: '0 0 16px', fontSize: '13px', fontWeight: 600 }}>
-      {breadcrumbs.map(({breadcrumb, match}) => (
-        <Breadcrumb.Item key={match.url} onClick={() => go.push(match.url)} style={{cursor: 'pointer'}}>
+      {breadcrumbs.map(({breadcrumb, key, match}) => (
+        <Breadcrumb.Item key={key} onClick={() => navigate(match.pathname)} style={{cursor: 'pointer'}}>
           <Trans>
             {breadcrumb.props.children}
           </Trans>

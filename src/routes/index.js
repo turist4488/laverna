@@ -1,5 +1,5 @@
 import React from "react";
-import {Route, Switch} from "react-router-dom";
+import { Route, Routes } from "react-router";
 
 import ProtectedRoute from "../components/PrivateRoute";
 
@@ -17,28 +17,33 @@ import CategoriesRoutes from "./categories";
 import ProductsRoutes from "./products";
 import {ROUTES} from "../constants/routes";
 import AttributesRoutes from "./attributes";
+import PrivateRoute from "../components/PrivateRoute";
 
 
-const Routes = () => {
+const AppRoutes = () => {
   return (
-    <Switch>
-      <ProtectedRoute path="/" exact component={Home}/>
-      <ProtectedRoute path={ROUTES.media.path} component={() => 'Media'}/>
-      <Route path={ROUTES.catalog.routes.products.path} component={ProductsRoutes}/>
-      <ProtectedRoute path={ROUTES.catalog.routes.cards.path} component={CardsPage}/>
-      <Route path={ROUTES.catalog.routes.categories.path} component={CategoriesRoutes}/>
-      <Route path={ROUTES.catalog.routes.brands.path} component={BrandsRoutes}/>
-      <Route path={ROUTES.catalog.routes.attributes.path} component={AttributesRoutes}/>
-      <Route path={ROUTES.customers.routes.roles.path} component={RolesRoutes}/>
-      <Route path={ROUTES.customers.routes.tariffs.path} component={TariffsRoutes}/>
-      <Route path={ROUTES.customers.routes.clients.path} component={CustomerRoutes}/>
-      <ProtectedRoute path={ROUTES.customers.routes.addresses.path} component={() => 'Addresses'}/>
-      <Route path={ROUTES.languages.path} component={LanguagesRoutes}/>
+    <Routes>
+      <Route path="/" element={<PrivateRoute />}>
+        <Route path="/" element={<Home />} />
+      </Route>
+      <Route path={ROUTES.media.path} element={<PrivateRoute />}>
+        <Route path={ROUTES.media.path} element={() => 'Media'} />
+      </Route>
+      <Route path={ROUTES.catalog.routes.products.routePath} element={<ProductsRoutes />}/>
+      <Route path={ROUTES.catalog.routes.cards.routePath} element={<CardsPage />} />
+      <Route path={ROUTES.catalog.routes.categories.routePath} element={<CategoriesRoutes />} />
+      <Route path={ROUTES.catalog.routes.brands.routePath} element={<BrandsRoutes />} />
+      <Route path={ROUTES.catalog.routes.attributes.path} element={<AttributesRoutes />} />
+      <Route path={ROUTES.customers.routes.roles.routePath} element={<RolesRoutes />} />
+      <Route path={ROUTES.customers.routes.tariffs.routePath} element={<TariffsRoutes />} />
+      <Route path={ROUTES.customers.routes.clients.routePath} element={<CustomerRoutes />} />
+      <Route path={ROUTES.customers.routes.addresses.routePath} element={() => 'Addresses'} />
+      <Route path={`${ROUTES.languages.routePath}`} element={<LanguagesRoutes />} />
       <Route path="/login" exact component={Login}/>
       <Route path="/register" exact component={Register}/>
       <Route component={() => "404"}/>
-    </Switch>
+    </Routes>
   );
 };
 
-export default Routes;
+export default AppRoutes;

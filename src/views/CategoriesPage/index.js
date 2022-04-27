@@ -49,7 +49,6 @@ function CategoriesPage() {
             }}
             size="small"
           >
-            <Column title={t('ID')} dataIndex="_id" key="_id"/>
             <Column title={t('Slug')} dataIndex="slug" key="slug"/>
             <Column title={t('Name')} dataIndex={['name', language]} key="name" />
             <Column

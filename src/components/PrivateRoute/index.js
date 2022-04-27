@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
-import { Route, Redirect } from "react-router-dom";
+import { Navigate, Outlet } from 'react-router'
 import { AuthenticationContext } from "../../context/AuthenticationContext";
-import MainLayout from "../MainLayout";
+import MainLayout from "../../layouts/MainLayout";
 import Loader from "../Loader";
-import {SideBarProvider} from "../../context/SideBarContext";
+import { SideBarProvider } from "../../context/SideBarContext";
 
-const ProtectedRoute = ({ view: Component, ...rest }) => {
+const ProtectedRoute = () => {
   const { user, authenticating } = useContext(AuthenticationContext);
 
   if(authenticating) {
@@ -15,11 +15,11 @@ const ProtectedRoute = ({ view: Component, ...rest }) => {
   return user.token ? (
     <SideBarProvider>
       <MainLayout>
-        <Route {...rest}/>
+        <Outlet />
       </MainLayout>
     </SideBarProvider>
   ) : (
-    <Redirect to="/login" />
+    <Navigate to="/login" />
   );
 };
 

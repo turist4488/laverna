@@ -1,5 +1,5 @@
 import React, { useState, useEffect, createContext } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 import Axios from "axios";
 import {authHeader} from "../utils";
@@ -7,7 +7,7 @@ import {authHeader} from "../utils";
 export const AuthenticationContext = createContext();
 
 export const AuthenticationProvider = ({ children }) => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const [user, setUser] = useState({
     token: null,
@@ -66,7 +66,7 @@ export const AuthenticationProvider = ({ children }) => {
 
         localStorage["authentication-token"] = response?.data?.access_token;
 
-        history.push("/");
+        navigate("/");
       } catch (error) {
         console.log(error)
         const { message } = error.response.data;
@@ -84,7 +84,7 @@ export const AuthenticationProvider = ({ children }) => {
 
     localStorage["authentication-token"] = "";
 
-    history.push("/");
+    navigate("/");
   };
 
   const register = (credentials) => {
@@ -103,7 +103,7 @@ export const AuthenticationProvider = ({ children }) => {
 
         localStorage["authentication-token"] = response?.data?.access_token;
 
-        history.push("/");
+        navigate("/");
       } catch (error) {
         const { message } = error.response.data;
 
